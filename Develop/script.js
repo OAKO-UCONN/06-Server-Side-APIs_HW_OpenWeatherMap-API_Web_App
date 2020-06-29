@@ -22,4 +22,12 @@ $(document).ready(function () {
       }
     });
   }
+
+  //Chamge text
+
+  function CityText(){
+
+  }
+
+  
 });
