@@ -15,7 +15,7 @@ $(document).ready(function () {
         "http://api.openweathermap.org/data/2.5/weather?q=" +
         searchValue +
         "&appid=" +
-        /* your API key here */ +"&units=imperial",
+        "757616426ad9d4b087c1407581edc051" + "&units=imperial",
       dataType: "json",
       success: function (data) {
         //Data is weather info back from the API
