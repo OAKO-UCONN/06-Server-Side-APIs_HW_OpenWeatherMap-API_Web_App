@@ -29,5 +29,17 @@ $(document).ready(function () {
 
   }
 
+  var weahterInfo = document.getElementById("weatherInfo");
+
+  
+  function getWeatherInfo() {
+    var place = document.getElementById("place").value.trim();
+    if (isNaN(place)) {
+      ajax(apiUrl + '&q=' + place);
+    } else {
+      ajax(apiUrl + '&zip=' + place);
+    }
+  };
+
   
 });
