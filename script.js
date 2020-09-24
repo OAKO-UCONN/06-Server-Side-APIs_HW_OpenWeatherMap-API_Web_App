@@ -11,6 +11,7 @@ $(document).ready(function () {
     $("#search-value").val("");
     //Search Value is the City name
     searchWeather(searchValue);
+    searchForecast(searchValue);
 
     //} else {
     //  $("error").html('Searchbox is empty! Enter in a City!')
@@ -71,4 +72,54 @@ var current = $.now();
 var maxDate = new Date(current);
 var currentDate = maxDate.toString();
 $('#date').html(currentDate);
+
+//loop through the data line 76. Inside the showForecast function.
+//Check if the time matches a certain value check for noon everyday. 5 day forecast for noon.
+//Create card element using jquery. Insert the weather data for that specific day into the card.
+//Append the card to the div with the forecast class.
+function showForecast(data) {
+//$('.forecast').html(return);
+
+<!--Tommorow Weather-->
+          <div class="card text-white bg-secondary mb-3" style="min-height: 100px;">
+            <div class="card-header"><h4>Day:</h4></div>
+            <div class="card-body">
+              <h5 class="card-title">
+                Weather:
+              </h5>
+              <p class="card-text">
+                Some quick example text to build on the card title and make up
+                the bulk of the card's content.
+              </p>
+              <button type="button" class="btn btn-info">
+                <a href="./restaurants/boston-market.html">Reservations & More Info</a>
+              </button>
+            </div>
+          </div>
+
+console.log(data);
+}
+
+
+//search forecast
+function searchForecast(searchValue) {
+  $.ajax({
+    type: "GET",
+    url:
+      "http://api.openweathermap.org/data/2.5/forecast?q=" +
+      searchValue + "&appid=" + "757616426ad9d4b087c1407581edc051" + "&units=imperial", dataType: "json",
+    success: function (data) {
+      //Data is weather info back from the API
+
+      //Widgets
+        var widget = showForecast(data);
+
+        $(".forecast").html(widget);
+
+      //Debug to make sure the API is functioning properly.
+      console.log(data);
+
+    }
+  });
+}
 
